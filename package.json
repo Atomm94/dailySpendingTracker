@@ -1,0 +1,37 @@
+{
+  "name": "daily-spending-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "babel-node app.js",
+    "build": "babel app.js --out-file app-compiled.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.0-beta.6",
+    "babel-node": "0.0.1-security",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-joi-validation": "^5.0.0",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.15",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.0.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "dotenv": "^8.2.0"
+  }
+}

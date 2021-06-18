@@ -1,13 +1,25 @@
-let error, tok, sendObj = {};
+let error = {};
 
 const statusTransaction = Object.freeze({
     INCOME: 'income',
-    EXPENSE: 'expense'
+    EXPENSE: 'expense',
+    SAVINGS: 'savings'
 })
+
+const statusBudget = Object.freeze({
+    MONTHLY: 'monthly',
+    YEARLY: 'yearly'
+})
+
+const statusTransactionType = Object.freeze({
+    ONE_TIME: 'one time',
+    REGULAR: 'regular'
+})
+
 
 export {
     error,
-    tok,
-    sendObj,
-    statusTransaction
+    statusTransaction,
+    statusBudget,
+    statusTransactionType
 }

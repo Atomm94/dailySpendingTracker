@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2387225c-49cd-43fe-ab9e-e5d95a522327" name="Default Changelist" comment="" />
+    <list default="true" id="2387225c-49cd-43fe-ab9e-e5d95a522327" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Transaction/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Transaction/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Transaction/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Transaction/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Transaction/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Transaction/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/User/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/User/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/User/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/User/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/User/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/User/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helpers/constant.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helpers/constant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Transaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +47,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1tObgJGLGl5Ll2V4CnhcL88Cgov" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,9 +58,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Therapy Bubble App" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\WPPC\Desktop\Daily Spending Tracker\Watch" />
+      <recent name="C:\Users\WPPC\Desktop\Daily Spending Tracker\Models" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -36,21 +79,43 @@
       <updated>1622643193010</updated>
       <workItem from="1622643194057" duration="2700000" />
       <workItem from="1622701100534" duration="57000" />
-      <workItem from="1622714444505" duration="11714000" />
+      <workItem from="1622714444505" duration="13272000" />
+      <workItem from="1622787234652" duration="1154000" />
+      <workItem from="1622788539504" duration="3935000" />
+      <workItem from="1622808130471" duration="5856000" />
+      <workItem from="1623046642401" duration="25000" />
+      <workItem from="1623150205651" duration="12785000" />
+      <workItem from="1623219171500" duration="19007000" />
+      <workItem from="1623306531244" duration="13730000" />
+      <workItem from="1623393430687" duration="21476000" />
+      <workItem from="1623651603722" duration="16581000" />
+      <workItem from="1623737679038" duration="513000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1622721988822">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1623738194938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622721988822" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1622701141457">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1623738194938" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1623737695823">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1622701141457" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1623737695823" />
   </component>
 </project>

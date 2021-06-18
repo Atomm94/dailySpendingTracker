@@ -18,11 +18,14 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    categories: [String],
-    transactions: [{
+    categories: [{
         type: Schema.Types.ObjectId,
-        ref: 'transaction'
-    }]
+        ref: 'category'
+    }],
+    budget: {
+        type: Schema.Types.ObjectId,
+        ref: 'budget'
+    }
 })
 
 const userModel = model('user', userSchema);

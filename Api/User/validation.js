@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import {statusBudget} from "../../Helpers/constant";
 const validator = require('express-joi-validation').createValidator({})
 
 const registerSchema = Joi.object({
@@ -13,10 +14,27 @@ const loginSchema = Joi.object({
     password: Joi.string().required().min(3).max(15).trim()
 })
 
+const budgetSchema = Joi.object({
+    name: Joi.string(),
+    status: Joi.string().valid(...Object.values(statusBudget)),
+    currency: Joi.string().required(),
+    balance: Joi.number().required()
+})
+
+const categorySchema = Joi.object({
+    name: Joi.string().required(),
+    status: Joi.string()
+})
+
+
 const registerValidation = validator.body(registerSchema);
 const loginValidation = validator.body(loginSchema);
+const budgetValidation = validator.body(budgetSchema);
+const categoryValidation = validator.body(categorySchema);
 
 export {
     registerValidation,
-    loginValidation
+    loginValidation,
+    budgetValidation,
+    categoryValidation
 }

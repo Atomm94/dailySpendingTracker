@@ -7,15 +7,9 @@ const loginSchema = Joi.object({
     password: Joi.string().required()
 });
 
-const defaultCategorySchema = Joi.object({
-    name: Joi.string().required(),
-    status: Joi.string().valid(...Object.values(statusTransaction)).required()
-})
 
 const loginValidation = validator.body(loginSchema);
-const defaultValidation = validator.body(defaultCategorySchema);
 
 export {
-    loginValidation,
-    defaultValidation
+    loginValidation
 }

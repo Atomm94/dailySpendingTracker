@@ -1,7 +1,16 @@
-import { Schema, model } from 'mongoose';
-import {statusTransactionType} from "../Helpers/constant";
+import { Schema, model } from "mongoose";
+import {statusTransaction, transactionRepeat} from "../Helpers/constant";
 
 const transactionSchema = new Schema({
+    amount: {
+        type: Number,
+        required: true
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'category',
+        required: true
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'user'
@@ -10,27 +19,30 @@ const transactionSchema = new Schema({
         type: String,
         required: true
     },
-    amount: {
-        type: Number,
-        required: true
+    status: {
+        type: String,
+        enum: Object.values(statusTransaction),
+        default: statusTransaction.EXPENSE
     },
-    category: {
-        type: Schema.Types.ObjectId,
-        ref: 'category'
+    transactionRepeat: {
+        type: String,
+        enum: Object.values(transactionRepeat),
+        default: transactionRepeat.ONE_TIME
     },
+    transaction_finished: {
+        type: Boolean,
+        default: false
+    },
+    note: String,
     budget: {
         type: Schema.Types.ObjectId,
         ref: 'budget'
     },
-    transactionType: {
-        type: String,
-        enum: Object.values(statusTransactionType),
-        default: statusTransactionType.ONE_TIME
-    },
-    photo: String,
-    description: String,
-    note: String,
-    updatedAt: Date
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        required: true
+    }
 })
 
 const transactionModel = model('transaction', transactionSchema);

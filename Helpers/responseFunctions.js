@@ -16,7 +16,17 @@ const errorHandler = (res, err) => {
     res.status(404).json(resObj)
 }
 
+const errorHandlerAuth = (res, err) => {
+    let resObj = {
+        success: false,
+        data: null,
+        message: err.message || 'missing authorization header!'
+    }
+    res.status(401).json(resObj)
+}
+
 export {
     successHandler,
-    errorHandler
+    errorHandler,
+    errorHandlerAuth
 }

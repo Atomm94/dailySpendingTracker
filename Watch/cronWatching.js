@@ -1,5 +1,5 @@
 import transactionModel from "../Models/Transaction";
-import {statusTransactionType} from "../Helpers/constant";
+import {transactionRepeat} from "../Helpers/constant";
 import finishedModel from "../Models/finishedTransactions";
 const cron = require('node-cron');
 
@@ -30,7 +30,7 @@ cron.schedule('1 0 * * *', async () => {
     }
     await transactionModel.updateMany({
         date: date,
-        transactionType: statusTransactionType.REGULAR
+        transactionRepeat: transactionRepeat.REGULAR
     }, {
         $set: {date: new Date().toLocaleDateString(), updatedAt: Date.now()}
     })

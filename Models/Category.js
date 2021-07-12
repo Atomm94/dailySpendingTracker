@@ -1,24 +1,28 @@
-import {Schema, model} from 'mongoose';
-import {statusTransaction} from "../Helpers/constant";
+import { Schema, model } from "mongoose";
+import {defaultCategories} from "../Helpers/constant";
 
 const categorySchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: String,
-        enum: Object.values(statusTransaction),
-        default: statusTransaction.EXPENSE
-    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
+    name: {
+        type: String,
+        required: true
+    },
+    parentCategory: {
+        type: String,
+        enum: Object.values(defaultCategories),
+        required: true
+    },
+    transactions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'transaction'
+    }],
     createdAt: {
         type: Date,
-        required: true,
-        default: Date.now
+        default: Date.now,
+        required: true
     }
 })
 

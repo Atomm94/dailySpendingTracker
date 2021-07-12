@@ -1,35 +1,45 @@
 import express from'express';
 import jwt from'jsonwebtoken';
-import config from '../config';
-import {successHandler, errorHandler} from "./responseFunctions";
+import * as config from '../config';
+import {successHandler, errorHandler, errorHandlerAuth} from "./responseFunctions";
 import userModel from "../Models/User";
+import jsonwebtoken from "jsonwebtoken";
 import {error} from "./constant";
-const token = express();
+const tokenAdmin = express();
+const tokenUser = express();
 
-token.use('/', async (req, res, next) => {
+tokenAdmin.use('/', async (req, res, next) => {
     const jwtAuth = req.authorization || req.headers['authorization'];
-    jwt.verify(jwtAuth, "dailyspendingtracker@6/2/2021", (err, user) => {
+    jwt.verify(jwtAuth, process.env.JWT_SECRET_KEY, async (err, user) => {
         if (err) {
             return errorHandler(res, err);
+        }
+        res.user = await jsonwebtoken.decode(jwtAuth);
+        let role = res.user.data.role;
+        if (role !== 'admin'){
+            error.message = 'admin is not find!';
+            return errorHandlerAuth(res, error)
         }
         next()
     })
 })
 
-token.get('/getData', async (req,res) => {
-    try {
-        const token = req.authorization || req.headers['authorization'];
-        const decodeToken = await jwt.decode(token);
-        const findUser = await userModel.findOne({_id: decodeToken.data.id})
-        if (!findUser) {
-            error.message = 'User is not find!';
-            return errorHandler(res, error);
+tokenUser.use('/', async (req, res, next) => {
+    const jwtAuth = req.authorization || req.headers['authorization'];
+    jwt.verify(jwtAuth, process.env.JWT_SECRET_KEY, async (err, user) => {
+        if (err) {
+            return errorHandler(res, err);
         }
-        return successHandler(res, findUser);
-    } catch (err) {
-        return errorHandler(res, err);
-    }
+        res.user = await jsonwebtoken.decode(jwtAuth);
+        let role = res.user.data.role;
+        if (role !== 'user'){
+            error.message = 'user is not find!';
+            return errorHandlerAuth(res, error)
+        }
+        next()
+    })
 })
+
 
 const createJwtToken = async (data, expire) => {
     let getToken = await jwt.sign({data: data}, "dailyspendingtracker@6/2/2021");
@@ -42,6 +52,7 @@ const createJwtToken = async (data, expire) => {
 }
 
 export {
-    token,
+    tokenAdmin,
+    tokenUser,
     createJwtToken
 }

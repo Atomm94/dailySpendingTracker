@@ -1,7 +1,7 @@
 import {errorHandler, successHandler} from "../../Helpers/responseFunctions";
 import jsonwebtoken from "jsonwebtoken";
 import userModel from "../../Models/User";
-import {error, statusTransaction, transactionRepeat} from "../../Helpers/constant";
+import {error, statusTransaction, transactionProcess, transactionRepeat} from "../../Helpers/constant";
 import transactionModel from "../../Models/Transaction";
 import categoryModel from "../../Models/Category";
 import budgetModel from "../../Models/Budget";
@@ -26,9 +26,11 @@ const createNewTransaction = async (req, res) => {
         body.budget = findUserBudget.budget._id;
         body.user = res.user.data.id;
         body.category = categoryId;
-        if (!body.date || body.date === new Date().toLocaleDateString()) {
-            body.date = new Date().toLocaleDateString()
-            body.transaction_finished = true;
+        if (!body.date) {
+            body.date = new Date().toLocaleDateString();
+        }
+        if (body.transactionRepeat === transactionRepeat.ONE_TIME) {
+            body.transaction_process = transactionProcess.FINISH;
             body.finishedDate = new Date().toLocaleDateString();
             await finishedModel.create(body);
         }

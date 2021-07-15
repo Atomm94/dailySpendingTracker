@@ -12,7 +12,7 @@ const statusBudget = Object.freeze({
 })
 
 const transactionRepeat = Object.freeze({
-    ONE_TIME: 'one time',
+    ONE_TIME: 'one_time',
     REGULAR: 'regular'
 })
 
@@ -27,10 +27,16 @@ const defaultCategories = Object.freeze({
     TRANSPORTATION: 'transportation'
 })
 
+const transactionProcess = Object.freeze({
+    FINISH: 'finish',
+    IN_PROCESS: 'in_process'
+})
+
 export {
     error,
     statusTransaction,
     statusBudget,
     transactionRepeat,
-    defaultCategories
+    defaultCategories,
+    transactionProcess
 }

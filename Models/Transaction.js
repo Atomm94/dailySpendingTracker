@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import {statusTransaction, transactionRepeat} from "../Helpers/constant";
+import {statusTransaction, transactionProcess, transactionRepeat} from "../Helpers/constant";
 
 const transactionSchema = new Schema({
     amount: {
@@ -29,9 +29,10 @@ const transactionSchema = new Schema({
         enum: Object.values(transactionRepeat),
         default: transactionRepeat.ONE_TIME
     },
-    transaction_finished: {
-        type: Boolean,
-        default: false
+    transaction_process: {
+        type: String,
+        enum: Object.values(transactionProcess),
+        default: transactionProcess.IN_PROCESS
     },
     note: String,
     budget: {
@@ -42,7 +43,8 @@ const transactionSchema = new Schema({
         type: Date,
         default: Date.now,
         required: true
-    }
+    },
+    updatedAt: Date
 })
 
 const transactionModel = model('transaction', transactionSchema);

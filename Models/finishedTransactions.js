@@ -29,6 +29,10 @@ const finishedTransactionsSchema = new Schema({
         type: String,
         required: true
     },
+    transaction: {
+        type: Schema.Types.ObjectId,
+        ref: 'transaction'
+    },
     createdAt: {
         type: Date,
         default: Date.now,

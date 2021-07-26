@@ -9,6 +9,7 @@ import finishedModel from "../../Models/finishedTransactions";
 
 const createNewTransaction = async (req, res) => {
     try {
+        let balance, finishedTransaction;
         const body = req.body;
         const { categoryId } = req.query;
         const findUserBudget = await userModel.findOne({_id: res.user.data.id})
@@ -26,20 +27,30 @@ const createNewTransaction = async (req, res) => {
         body.budget = findUserBudget.budget._id;
         body.user = res.user.data.id;
         body.category = categoryId;
+        balance = findUserBudget.budget.balance;
         if (!body.date) {
-            body.date = new Date().toLocaleDateString();
+            body.date = new Date().toLocaleDateString()
         }
-        if (body.transactionRepeat === transactionRepeat.ONE_TIME) {
-            body.transaction_process = transactionProcess.FINISH;
-            body.finishedDate = new Date().toLocaleDateString();
-            await finishedModel.create(body);
+        if (body.date === new Date().toLocaleDateString()) {
+            if (body.status !== statusTransaction.INCOME) {
+                body.amount = -body.amount;
+            }
+            balance = findUserBudget.budget.balance + body.amount;
+            if (body.transactionRepeat === transactionRepeat.ONE_TIME) {
+                body.transaction_process = transactionProcess.FINISH
+                body.finishedDate = new Date().toLocaleDateString();
+                finishedTransaction = await finishedModel.create(body);
+            } else {
+                body.finishedDate = new Date().toLocaleDateString();
+                finishedTransaction = await finishedModel.create(body);
+            }
         }
         const createTransaction = await transactionModel.create(body);
-        if (body.status !== statusTransaction.INCOME) {
-            body.amount = -body.amount;
+        if (finishedTransaction) {
+            finishedTransaction.transaction = createTransaction._id;
+            await finishedTransaction.save();
         }
         res.message = 'You are created new transaction';
-        let balance = findUserBudget.budget.balance + body.amount;
         await budgetModel.updateOne({member: res.user.data.id}, {
             $push: {transactions: createTransaction._id},
             $set: {balance: balance}
@@ -71,12 +82,13 @@ const getTransactionsForDiagram = async (req, res) => {
         let sum;
         let arr = [];
         let obj = {};
+        const status = req.query;
         const findUser = await userModel.findOne({_id: res.user.data.id});
         if (!findUser) {
             error.message = 'User is not find!';
             return errorHandler(res, error);
         }
-        const getExpenseTransactions = await transactionModel.find({status: statusTransaction.EXPENSE, user: res.user.data.id}).select('amount');
+        const getExpenseTransactions = await transactionModel.find({status: status, user: res.user.data.id}).select('amount').lean();
         getExpenseTransactions.map(item => {
             sum += Number(item)
         })

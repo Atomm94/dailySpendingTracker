@@ -1,73 +1,85 @@
 import transactionModel from "../Models/Transaction";
-import {transactionProcess, transactionRepeat} from "../Helpers/constant";
+import {statusTransaction, transactionProcess, transactionRepeat} from "../Helpers/constant";
 import finishedModel from "../Models/finishedTransactions";
+import Joi from "joi";
+import fs from 'fs'
+import budgetModel from "../Models/Budget";
+import userModel from "../Models/User";
 const cron = require('node-cron');
 
 
-cron.schedule('4 12 14 7 *', async () => {
+cron.schedule('40 16 26 7 *', async () => {
     let date = new Date().toLocaleDateString()
+        let split = date.split('/')
+        let num = +split[0] - 1
+        split[0] = num.toString()
+        date = split.join('/')
 
-    const findOneTimeTransactions = await transactionModel.find({
+    const findTransactions = await transactionModel.find({
         date: date,
-        transactionRepeat: transactionRepeat.ONE_TIME
-    }).populate('category')
+        transaction_process: transactionProcess.IN_PROCESS
+    }).populate('budget').lean()
 
-    if (findOneTimeTransactions !== []) {
-        findOneTimeTransactions.map(async item => {
-            await finishedModel.create({
-                user: item.user,
-                transaction: item._id,
-                budget: item.budget,
-                category: item.category,
-                finishedDate: date,
-                amount: item.amount,
-                status: item.status,
-                note: item.note,
-                createdAt: Date.now()
-            })
+    if (findTransactions !== []) {
+        let budgetDocs = [];
+        let transactionDocs = [];
+        let finishedTransactionDocs = [];
+        let bulkOps = {};
+        findTransactions.map(async item => {
+                bulkOps = {
+                    updateMany: {
+                        filter: { date: date, transactionRepeat: transactionRepeat.ONE_TIME },
+                        update: { $set: { transaction_process: transactionProcess.FINISH } }
+                    },
+                }
+                transactionDocs.push(bulkOps);
+
+                date = new Date().toLocaleDateString()
+                bulkOps = {
+                    updateMany: {
+                        filter: { transactionRepeat: transactionRepeat.REGULAR},
+                        update: { $set: { date: date } }
+                    },
+                }
+                transactionDocs.push(bulkOps);
+
+            date = new Date().toLocaleDateString()
+
+            bulkOps = {
+                insertOne: {
+                    document: {
+                        status: item.status,
+                        amount: item.amount,
+                        note: item.note,
+                        user: item.user,
+                        category: item.category,
+                        finishedDate: date,
+                        budget: item.budget,
+                        transaction: item._id
+                    }
+                }
+            }
+            finishedTransactionDocs.push(bulkOps);
+
+            if (item.status !== statusTransaction.INCOME) {
+                item.amount = -item.amount;
+            }
+            item.budget.balance += item.amount;
+
+            bulkOps = {
+                updateOne: {
+                    filter: { _id: item.budget._id },
+                    update: { $set: { balance: item.budget.balance } }
+                },
+            }
+            budgetDocs.push(bulkOps)
+
         })
+
+        await transactionModel.bulkWrite(transactionDocs);
+        await finishedModel.bulkWrite(finishedTransactionDocs);
+        await budgetModel.bulkWrite(budgetDocs);
+
+        console.log('transactions are updated!');
     }
-    const updateOneTimeTransactions = await transactionModel.updateMany({
-        date: date,
-        transactionRepeat: transactionRepeat.ONE_TIME
-    }, {
-        $set: {transaction_process: transactionProcess.FINISH, updatedAt: Date.now()}
-    })
-
-    let split = date.split('/')
-    let num = +split[0] - 1
-    split[0] = num.toString()
-    date = split.join('/')
-
-    const findRegularTransactions = await transactionModel.find({
-        date: date,
-        transactionRepeat: transactionRepeat.REGULAR
-    }).populate('category')
-
-    let finishedDate = new Date().toLocaleDateString();
-
-    if (findRegularTransactions !== []) {
-        findRegularTransactions.map(async item => {
-            await finishedModel.create({
-                    user: item.user,
-                    transaction: item._id,
-                    budget: item.budget,
-                    category: item.category,
-                    finishedDate: finishedDate,
-                    amount: item.amount,
-                    status: item.status,
-                    note: item.note,
-                    createdAt: Date.now()
-            })
-        })
-    }
-    await transactionModel.updateMany({
-        date: date,
-        transactionRepeat: transactionRepeat.REGULAR
-    }, {
-        $set: {date: finishedDate, updatedAt: Date.now()}
-    })
-    console.log('transactions are updated!');
 });
-
-

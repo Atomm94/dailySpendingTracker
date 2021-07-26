@@ -17,7 +17,6 @@ const loginSchema = Joi.object({
 const budgetSchema = Joi.object({
     name: Joi.string(),
     startDate: Joi.string(),
-    status: Joi.string().valid(...Object.values(statusBudget)),
     currency: Joi.string().required(),
     balance: Joi.number().required()
 })

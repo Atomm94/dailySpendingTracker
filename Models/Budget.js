@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import {statusBudget} from "../Helpers/constant";
 
 const budgetSchema = new Schema({
     name: {
@@ -16,11 +15,6 @@ const budgetSchema = new Schema({
     },
     balance: {
         type: Number,
-        required: true
-    },
-    status: {
-        type: String,
-        enum: Object.values(statusBudget),
         required: true
     },
     member: {

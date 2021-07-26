@@ -16,4 +16,3 @@ export {
     hashPassword,
     comparePassword
 }
-

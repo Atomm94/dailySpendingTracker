@@ -29,7 +29,6 @@ const login = async (req, res) => {
             error.message = 'User with this email is not find!';
             return errorHandler(res, error);
         }
-
         const compare = await comparePassword(password, findUserByEmail.password);
         if (!compare) {
             error.message = 'Password is not correct!';
@@ -79,7 +78,6 @@ const getUserCategories = async (req, res) => {
         const findCategories = await userModel.findOne({_id: res.user.data.id})
             .select('categories')
             .populate('categories');
-
         res.message = "My all categories";
         return successHandler(res, findCategories);
     } catch (err) {

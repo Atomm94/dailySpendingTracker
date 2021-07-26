@@ -40,11 +40,10 @@ tokenUser.use('/', async (req, res, next) => {
     })
 })
 
-
 const createJwtToken = async (data, expire) => {
-    let getToken = await jwt.sign({data: data}, "dailyspendingtracker@6/2/2021");
+    let getToken = await jwt.sign({data: data}, process.env.JWT_SECRET_KEY);
     if (expire) {
-        getToken = await jwt.sign({data: data}, "dailyspendingtracker@6/2/2021", {
+        getToken = await jwt.sign({data: data}, process.env.JWT_SECRET_KEY, {
             expiresIn: expire
         });
     }

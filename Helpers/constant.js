@@ -6,11 +6,6 @@ const statusTransaction = Object.freeze({
     SAVINGS: 'savings'
 })
 
-const statusBudget = Object.freeze({
-    MONTHLY: 'monthly',
-    YEARLY: 'yearly'
-})
-
 const transactionRepeat = Object.freeze({
     ONE_TIME: 'one_time',
     REGULAR: 'regular'
@@ -35,8 +30,8 @@ const transactionProcess = Object.freeze({
 export {
     error,
     statusTransaction,
-    statusBudget,
     transactionRepeat,
     defaultCategories,
     transactionProcess
 }
+

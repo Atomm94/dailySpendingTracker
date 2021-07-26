@@ -22,10 +22,16 @@
     <list default="true" id="2387225c-49cd-43fe-ab9e-e5d95a522327" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/Transaction/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Transaction/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/User/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/User/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/User/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/User/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helpers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helpers/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helpers/constant.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helpers/constant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Transaction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/finishedTransactions.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/finishedTransactions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helpers/passwordHash.js" beforeDir="false" afterPath="$PROJECT_DIR$/Helpers/passwordHash.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helpers/transactionProcess.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Budget.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Budget.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Watch/cronWatching.js" beforeDir="false" afterPath="$PROJECT_DIR$/Watch/cronWatching.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +57,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Golf/gdls-backend" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.19.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.60" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -96,6 +104,16 @@
       <workItem from="1626157716378" duration="17894000" />
       <workItem from="1626244023102" duration="15504000" />
       <workItem from="1626330323547" duration="6341000" />
+      <workItem from="1626443248702" duration="4491000" />
+      <workItem from="1626675231602" duration="22121000" />
+      <workItem from="1626759412872" duration="107000" />
+      <workItem from="1626858454956" duration="3483000" />
+      <workItem from="1626864529515" duration="13852000" />
+      <workItem from="1626933158055" duration="8155000" />
+      <workItem from="1626947607777" duration="15490000" />
+      <workItem from="1627022623036" duration="16305000" />
+      <workItem from="1627278315318" duration="11818000" />
+      <workItem from="1627301243425" duration="5947000" />
     </task>
     <servers />
   </component>

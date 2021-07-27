@@ -3,7 +3,7 @@ const transaction = express();
 import * as controllers from './index';
 import * as validation from './validation';
 
+transaction.get('/getTransactions', controllers.getTransactionsByDate);
 transaction.post('/log/newTransaction', validation.transactionValidation, controllers.createNewTransaction);
-transaction.post('/log/getTransactionsForDiagram', controllers.getTransactionsForDiagram);
 
 export default transaction;

@@ -2,7 +2,7 @@ import env from 'dotenv';
 import mongoose from 'mongoose';
 env.config();
 
-mongoose.connect("mongodb+srv://At11:atmak11@cluster0.d1re6.mongodb.net/dailySpending?retryWrites=true&w=majority", {
+mongoose.connect('mongodb+srv://At11:atmak11@cluster0.d1re6.mongodb.net/dailySpending?retryWrites=true&w=majority', {
     useFindAndModify: true,
     useCreateIndex: true,
     useNewUrlParser: true,

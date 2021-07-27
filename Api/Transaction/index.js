@@ -64,43 +64,16 @@ const createNewTransaction = async (req, res) => {
 
 const getTransactionsByDate = async (req, res) => {
     try {
-        const { date } = req.body;
+        let { month, year, status } = req.query;
         const findUser = await userModel.findOne({_id: res.user.data.id});
         if (!findUser) {
             error.message = 'User is not find!';
             return errorHandler(res, error);
         }
-        const getTransactions = await transactionModel.find({date: date});
+        month = new RegExp(`^${month}`);
+        year = new RegExp(`${year}$`);
+        const getTransactions = await transactionModel.find({ $and: [ { date: month }, { date:  year }, {status: status}, {user: res.user.data.id} ] });
         return successHandler(res, getTransactions);
-    } catch (err) {
-        return errorHandler(res, err);
-    }
-}
-
-const getTransactionsForDiagram = async (req, res) => {
-    try {
-        let sum;
-        let arr = [];
-        let obj = {};
-        const status = req.query;
-        const findUser = await userModel.findOne({_id: res.user.data.id});
-        if (!findUser) {
-            error.message = 'User is not find!';
-            return errorHandler(res, error);
-        }
-        const getExpenseTransactions = await transactionModel.find({status: status, user: res.user.data.id}).select('amount').lean();
-        getExpenseTransactions.map(item => {
-            sum += Number(item)
-        })
-        getExpenseTransactions.map(el => {
-            obj = {
-                transaction: el.id,
-                price: el.amount,
-                percent: el.amount/sum * 100
-            }
-            arr.push(obj)
-        })
-        return successHandler(res, arr);
     } catch (err) {
         return errorHandler(res, err);
     }
@@ -108,5 +81,5 @@ const getTransactionsForDiagram = async (req, res) => {
 
 export {
     createNewTransaction,
-    getTransactionsForDiagram
+    getTransactionsByDate
 }

@@ -72,8 +72,39 @@ const getTransactionsByDate = async (req, res) => {
         }
         month = new RegExp(`^${month}`);
         year = new RegExp(`${year}$`);
-        const getTransactions = await transactionModel.find({ $and: [ { date: month }, { date:  year }, {status: status}, {user: res.user.data.id} ] });
+        const getTransactions = await transactionModel.aggregate([
+                {
+                    $match: {
+                        $and: [ { date: month }, { date:  year }, {status: status}, {user: res.user.data.id}] // {user: res.user.data.id}
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'categories',
+                        localField: 'category',
+                        foreignField: '_id',
+                        as: 'category'
+                    }
+                },
+                {
+                    $unwind: '$category'
+                },
+                {
+                    $group: {_id: {category: "$category.name", status: status}, transactions: {$sum: 1}, totalSum: {$sum: "$amount"}}
+                }
+            ]);
         return successHandler(res, getTransactions);
+    } catch (err) {
+        return errorHandler(res, err);
+    }
+}
+
+const getTransaction = async (req, res) => {
+    try {
+        const { transactionId } = req.query;
+        const findTransactionById = await transactionModel.findOne({_id: transactionId, user: res.user.data.id});
+        res.message = 'Your transaction!';
+        return successHandler(res, findTransactionById);
     } catch (err) {
         return errorHandler(res, err);
     }
@@ -81,5 +112,6 @@ const getTransactionsByDate = async (req, res) => {
 
 export {
     createNewTransaction,
-    getTransactionsByDate
+    getTransactionsByDate,
+    getTransaction
 }

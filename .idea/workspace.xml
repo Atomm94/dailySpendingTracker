@@ -23,7 +23,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/Transaction/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Transaction/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/Transaction/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Transaction/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Watch/cronWatching.js" beforeDir="false" afterPath="$PROJECT_DIR$/Watch/cronWatching.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +58,15 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/main" />
       <recent name="C:\Users\WPPC\Desktop\Daily Spending Tracker\Watch" />
       <recent name="C:\Users\WPPC\Desktop\Daily Spending Tracker\Models" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Debug" type="NodeJSConfigurationType" path-to-js-file="Watch/cronWatching.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -109,7 +115,15 @@
       <workItem from="1627367334671" duration="1283000" />
       <workItem from="1627370354558" duration="878000" />
       <workItem from="1627376936486" duration="12872000" />
-      <workItem from="1627397882860" duration="3426000" />
+      <workItem from="1627397882860" duration="9302000" />
+      <workItem from="1627451358145" duration="4523000" />
+      <workItem from="1627465392891" duration="12512000" />
+      <workItem from="1627539693585" duration="18644000" />
+      <workItem from="1627625852773" duration="18223000" />
+      <workItem from="1627881682713" duration="17779000" />
+      <workItem from="1627969629877" duration="2498000" />
+      <workItem from="1627974571778" duration="7682000" />
+      <workItem from="1627988199894" duration="8319000" />
     </task>
     <servers />
   </component>

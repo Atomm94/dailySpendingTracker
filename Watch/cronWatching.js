@@ -73,7 +73,6 @@ cron.schedule('40 16 26 7 *', async () => {
                 },
             }
             budgetDocs.push(bulkOps)
-
         })
 
         await transactionModel.bulkWrite(transactionDocs);

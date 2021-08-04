@@ -91,7 +91,12 @@ const getTransactionsByDate = async (req, res) => {
                 },
                 {
                     $group: {_id: {category: "$category.name", status: status}, transactions: {$sum: 1}, totalSum: {$sum: "$amount"}}
-                }
+                },
+            { $addFields: {
+                    totalPrice: {
+                        $sum: "$totalSum"
+                    }
+                } },
             ]);
         return successHandler(res, getTransactions);
     } catch (err) {
